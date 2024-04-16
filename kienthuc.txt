@@ -1,0 +1,8 @@
+slice sprite
+tile map indestructibles : k the pha huy, them tilemap colider
+tile map destructibles: co the pha huy
+=> ca 2 tilemap deu phai them tilemap collider 2D de lam vat can
+
+keycode de di chuyen 
+
+invokerepeating nextframe de chuyen doi sang frame ke tiep
