@@ -6,3 +6,46 @@ tile map destructibles: co the pha huy
 keycode de di chuyen 
 
 invokerepeating nextframe de chuyen doi sang frame ke tiep
+
+
+render animation:
+- tao 4 object con trong player tuong ung la up,down,left,right
+- ham animated render: 
+   + idleSprite: hoat anh nhan vat dung im
+   + sprite[]: mang luu cac sprite cua nhan vat
+   + isloop: lap lai
+   + isIdle: co phai dung yen
+   + aniTime: khoang tgian render giua cac frame
+   + aniframe: frame hien tai
+- OnEnable: de xem trang thai nao se dc render (up,down,left,right)
+- NextFrame()//ham de goi toi cac frame tiep theo
+
+
+
+
+Explosion: hoat anh no cua bom
+- start, middle, end: cac trang thai hoat anh
+- SetDirection: ham xac dinh huong cua animation de render
+
+
+
+
+
+bom controller
+- ham StartCorouine(hamkhac)
+   + ienumerator: kieu du lieu cho phep cac lenh trong ham do co the tam dung
+thuc thi trong khoang tgian nao do, di kem voi yield return waitforseconds(tgian)
+- ontriggerExit2D: khi nhan vat tha bom tai vi tri cua nhan vat, collider cua
+nhan vat va bom se cham nhau ngay tu do, khi do ham OntriggerExit2d se dc goi
+khi colider nvat k cham bomb va cham lai de tuong tac
+- Explode: ham no bom theo chieu dai
+   + De quy ham no theo chieu dai hay ban kinh cua bom
+   + neu ban kinh > 1 thi render midle, con k thi nguoc lai
+   + render theo vi tri += huong no
+   + moi lan de quy se giam chieu dai hay ban kinh no
+   + cho toi khi ban kinh <=1 thi vi tri cuoi cung se la render end
+
+
+
+
+
