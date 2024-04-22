@@ -59,6 +59,11 @@ Item pickup
 - so sanh collier voi tag, phai gan tag player thanh player de so sanh
 
 
+death state
+- neu va cham voi vu no
+   + enable false voi tat ca render up,down,left,right,movemoent,bombcontroller
+   + enable true voi render death
+   + invoke 1.25s de cho muot roi chuyen qua object active false => ngung tat ca
 
 
 

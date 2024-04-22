@@ -23,6 +23,7 @@ public class MovementController : MonoBehaviour
 
     private AnimatedSpriteRenderer activeSpriteRenderer;//xac dinh xem cai animation nao dc active
 
+    public AnimatedSpriteRenderer spriteRendererDeath;//animation death
 
     private void Awake()
     {
@@ -74,4 +75,34 @@ public class MovementController : MonoBehaviour
         activeSpriteRenderer = spriteRenderer;//render sprite hien tai
         activeSpriteRenderer.idle = direction == Vector2.zero;//gan trang thai idle
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Explosion"))//neu va cham voi vu no bom
+        {
+            DeathSequence();
+        }
+    }
+
+    private void DeathSequence()
+    {
+        enabled = false;//vo hieu hoa move ment
+        GetComponent<BombController>().enabled = false;
+
+        spriteRendererUp.enabled = false;
+        spriteRendererDown.enabled = false;
+        spriteRendererLeft.enabled = false;
+        spriteRendererRight.enabled = false;
+
+        spriteRendererDeath.enabled = true;
+
+        Invoke(nameof(OnDeathSequenceEnded), 1.25f);
+    }
+
+    private void OnDeathSequenceEnded()
+    {
+        gameObject.SetActive(false);//ngan toan bo hoat dong ve nguoi choi
+        FindObjectOfType<GameManager>().CheckWinState();
+    }
+
 }
