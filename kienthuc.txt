@@ -53,6 +53,12 @@ khi colider nvat k cham bomb va cham lai de tuong tac
    + xoa object do bang class 
 
 
+Item pickup
+- Dung enum de tao kieu du lieu enum, gan scrip nay cho object item, set type la kieu bom
+- thuc hien OntriggerEnter de goi su kien nhat item, switch case de theo tuy item
+- so sanh collier voi tag, phai gan tag player thanh player de so sanh
+
+
 
 
 

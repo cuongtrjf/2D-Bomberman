@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class BombController : MonoBehaviour
 {
-    [Header("Bomb")]
+    [Header("Bomb")] 
     public KeyCode inputKey = KeyCode.Space;//nhan space de tha boom
     public GameObject bombPrefab;
     public float bombFuseTime = 3f;//thoi gian bomb phat no
@@ -123,6 +123,13 @@ public class BombController : MonoBehaviour
         }
 
     }
+
+    public void AddBomb()//phuc vu pick item tang so luong bom
+    {
+        bombAmount++;
+        bombRemaining++;
+    }
+
 
     private void OnTriggerExit2D(Collider2D other)//khi player tha bomb va roi khoi collider cua qua boom thi ham nay dc goi
     {
