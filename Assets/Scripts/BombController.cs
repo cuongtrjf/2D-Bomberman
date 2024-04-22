@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class BombController : MonoBehaviour
 {
@@ -18,6 +19,13 @@ public class BombController : MonoBehaviour
     public LayerMask explosionLayerMask;
     public float explosionDuration = 1f;//thoi gian hoat anh bomd no
     public int explosionRadius = 1;//ban kinh no cua bomb, ban dau se la 1 o vuong
+
+
+    //explode destructible
+    [Header("Destructible")]
+    public Destructible destructiblePrefab;
+    public Tilemap destructibleTile;//tham chieu den tilemap destrucible de pha huy no
+
 
 
     private void OnEnable()//ham nay de cap nhat lai doi tuong khi moi lan duoc goi lai
@@ -87,6 +95,8 @@ public class BombController : MonoBehaviour
         //=> ham nay check bom no co va cham voi map k de k render hoat anh no
         //cac tham so posion la vi tri check, size box check la 1/2, layer check voi no (o day dc gan la stage)
         {
+            //pha huy tilemap tai day
+            ClearDestructible(position);
             return ;
         }
         
@@ -100,7 +110,19 @@ public class BombController : MonoBehaviour
     }
 
 
+    private void ClearDestructible(Vector2 position)//xoa tile map khi bom no
+    {
+        Vector3Int cell= destructibleTile.WorldToCell(position);//no hoat dong voi vecto3,chuyen vitri thanh o de xoa
+        TileBase tile= destructibleTile.GetTile(cell);//lay tile tai o do
 
+        if (tile != null)
+        {
+            //neu o do k rong thi se tao hieu ung no brick, sau do xoa cell
+            Instantiate(destructiblePrefab, position, Quaternion.identity);//sinh hieu ung pha tuong
+            destructibleTile.SetTile(cell, null);//dat no thanh rong de xoa
+        }
+
+    }
 
     private void OnTriggerExit2D(Collider2D other)//khi player tha bomb va roi khoi collider cua qua boom thi ham nay dc goi
     {

@@ -45,6 +45,13 @@ khi colider nvat k cham bomb va cham lai de tuong tac
    + moi lan de quy se giam chieu dai hay ban kinh no
    + cho toi khi ban kinh <=1 thi vi tri cuoi cung se la render end
 
+- ClearDestructible(position)//ham xoa tile map
+   + Dung vector3 de chuyen vi tri thanh 1 o (cell)
+   + lay tile bang cell (GetTile(cell))
+   + Neu tile do khac null thi se thuc hien tao object pha tile
+   + Set tile do thanh null de xoa
+   + xoa object do bang class 
+
 
 
 
