@@ -11,7 +11,7 @@ public class BombController : MonoBehaviour
     public float bombFuseTime = 3f;//thoi gian bomb phat no
     public int bombAmount = 1; //so luong bomb ban dau cua player
     public int bombRemaining = 0;//so luong bomb con lai 
-
+    private int maxBomb = 3;
 
     //animation bomb explosion
     [Header("Explosion")]
@@ -19,7 +19,7 @@ public class BombController : MonoBehaviour
     public LayerMask explosionLayerMask;
     public float explosionDuration = 1f;//thoi gian hoat anh bomd no
     public int explosionRadius = 1;//ban kinh no cua bomb, ban dau se la 1 o vuong
-
+    private int maxRadius = 3;
 
     //explode destructible
     [Header("Destructible")]
@@ -126,8 +126,19 @@ public class BombController : MonoBehaviour
 
     public void AddBomb()//phuc vu pick item tang so luong bom
     {
-        bombAmount++;
-        bombRemaining++;
+        if (bombAmount < maxBomb)
+        {
+            bombAmount++;
+            bombRemaining++;
+        }
+    }
+
+    public void PlusRadius()
+    {
+        if (explosionRadius < maxRadius)
+        {
+            explosionRadius++;
+        }
     }
 
 

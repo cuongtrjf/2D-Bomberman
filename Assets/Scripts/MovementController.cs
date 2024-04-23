@@ -8,6 +8,8 @@ public class MovementController : MonoBehaviour
 
     private Vector2 direction = Vector2.down;//khoi tao nhan vat huong xuong duoi
     public float speed = 5f;//toc do cua nhan vat
+    private float maxSpeed = 8f;
+
 
     //input movement
     public KeyCode inputUp = KeyCode.W;
@@ -97,6 +99,14 @@ public class MovementController : MonoBehaviour
         spriteRendererDeath.enabled = true;
 
         Invoke(nameof(OnDeathSequenceEnded), 1.25f);
+    }
+
+    public void PlusSpeed()
+    {
+        if (speed < maxSpeed)
+        {
+            speed++;
+        }
     }
 
     private void OnDeathSequenceEnded()
